@@ -1,8 +1,13 @@
+<a href="https://haskimail.ru">
+    <img src="https://github.com/DashaMail/haskimail-python/raw/main/haskimail.png" alt="Haskimail Logo" title="Haskimail" width="120" height="120" align="right">
+</a>
+
 # Haskimail Python
 
-<img src="https://haskimail.ru/assets/images/haskimail_logo.svg" alt="Haskimail" width="200">
-
 Официальная Python-библиотека для [Haskimail HTTP API](https://haskimail.ru/developer).
+
+[![PyPI version](https://img.shields.io/pypi/v/haskimail.svg)](https://pypi.org/project/haskimail/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Установка
 
