@@ -93,16 +93,6 @@ class ServerClient(BaseClient):
         """Validate template content without creating it."""
         return self._post("/templates/validate", body=options)
 
-    # ── Server ──────────────────────────────────────────────────────────────
-
-    def get_server(self) -> dict:
-        """Get the current server's settings."""
-        return self._get("/server")
-
-    def edit_server(self, options: dict[str, Any]) -> dict:
-        """Update the current server's settings."""
-        return self._put("/server", body=options)
-
     # ── Outbound Messages ───────────────────────────────────────────────────
 
     def get_outbound_messages(self, **filters: Any) -> dict:
