@@ -76,34 +76,6 @@ class AccountClient(BaseClient):
         """Trigger SPF verification for a domain."""
         return self._put(f"/domains/{domain_id}/verifyspf")
 
-    # ── Sender Signatures ───────────────────────────────────────────────────
-
-    def get_sender_signatures(self, **filters: Any) -> dict:
-        """List sender signatures. Filters: ``count``, ``offset``."""
-        return self._get("/senders", **filters)
-
-    def get_sender_signature(self, signature_id: int) -> dict:
-        """Get a sender signature by ID."""
-        return self._get(f"/senders/{signature_id}")
-
-    def create_sender_signature(self, options: dict[str, Any]) -> dict:
-        """Create a new sender signature."""
-        return self._post("/senders", body=options)
-
-    def edit_sender_signature(
-        self, signature_id: int, options: dict[str, Any]
-    ) -> dict:
-        """Update a sender signature."""
-        return self._put(f"/senders/{signature_id}", body=options)
-
-    def delete_sender_signature(self, signature_id: int) -> dict:
-        """Delete a sender signature."""
-        return self._delete(f"/senders/{signature_id}")
-
-    def resend_sender_signature_confirmation(self, signature_id: int) -> dict:
-        """Resend the confirmation email for a sender signature."""
-        return self._post(f"/senders/{signature_id}/resend")
-
     # ── Templates (Account-level) ───────────────────────────────────────────
 
     def push_templates(self, options: dict[str, Any]) -> dict:

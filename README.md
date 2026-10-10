@@ -175,7 +175,7 @@ browsers = client.get_click_browser_usage()
 
 ## AccountClient
 
-Для операций на уровне аккаунта (управление серверами, доменами, подписями отправителей) используйте `AccountClient`:
+Для операций на уровне аккаунта (управление серверами и доменами, перенос шаблонов) используйте `AccountClient`:
 
 ```python
 from haskimail import AccountClient
@@ -213,16 +213,6 @@ server = account.create_server({
 
 # Редактировать сервер
 account.edit_server(server["ID"], {"Name": "Production v2"})
-```
-
-### Подписи отправителей
-
-```python
-# Создать подпись
-signature = account.create_sender_signature({
-    "Name": "Отдел продаж",
-    "FromEmail": "sales@example.com",
-})
 ```
 
 ### Push шаблонов

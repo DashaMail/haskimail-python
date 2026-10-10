@@ -62,28 +62,6 @@ class TestDomains:
         call_args = mock_session.request.call_args
         assert call_args[0] == ("PUT", "https://api.haskimail.ru/domains/5/verifyspf")
 
-class TestSenderSignatures:
-    def test_get_sender_signatures(self, account_client, mock_session, ok_response):
-        mock_session.request.return_value = ok_response(
-            200, {"TotalCount": 1, "SenderSignatures": []}
-        )
-        result = account_client.get_sender_signatures()
-        assert "TotalCount" in result
-
-    def test_create_sender_signature(self, account_client, mock_session, ok_response):
-        mock_session.request.return_value = ok_response(200, {"ID": 10})
-        result = account_client.create_sender_signature(
-            {"Name": "Test", "FromEmail": "test@example.com"}
-        )
-        assert result["ID"] == 10
-
-    def test_resend_confirmation(self, account_client, mock_session, ok_response):
-        mock_session.request.return_value = ok_response(200, {})
-        account_client.resend_sender_signature_confirmation(10)
-        call_args = mock_session.request.call_args
-        assert call_args[0] == ("POST", "https://api.haskimail.ru/senders/10/resend")
-
-
 class TestErrorHandling:
     def test_invalid_api_key(self, account_client, mock_session, error_response):
         mock_session.request.return_value = error_response(401, 10, "Invalid API token")
