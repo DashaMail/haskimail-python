@@ -60,7 +60,7 @@ class TestDomains:
         mock_session.request.return_value = ok_response(200, {"SPFVerified": True})
         account_client.verify_domain_spf(5)
         call_args = mock_session.request.call_args
-        assert call_args[0] == ("PUT", "https://api.haskimail.ru/domains/5/verifySPF")
+        assert call_args[0] == ("PUT", "https://api.haskimail.ru/domains/5/verifyspf")
 
     def test_rotate_dkim(self, account_client, mock_session, ok_response):
         mock_session.request.return_value = ok_response(200, {"ID": 5})

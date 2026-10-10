@@ -82,7 +82,7 @@ class AccountClient(BaseClient):
 
     def verify_domain_spf(self, domain_id: int) -> dict:
         """Trigger SPF verification for a domain."""
-        return self._put(f"/domains/{domain_id}/verifySPF")
+        return self._put(f"/domains/{domain_id}/verifyspf")
 
     def rotate_domain_dkim(self, domain_id: int) -> dict:
         """Rotate the DKIM key for a domain."""

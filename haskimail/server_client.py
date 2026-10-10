@@ -177,19 +177,19 @@ class ServerClient(BaseClient):
 
         Filters: ``tag``, ``fromdate``, ``todate``, ``messagestream``.
         """
-        return self._get("/stats/outbound", **filters)
+        return self._get("/stats", **filters)
 
     def get_sent_counts(self, **filters: Any) -> dict:
         """Get sent email counts grouped by day."""
-        return self._get("/stats/outbound/sends", **filters)
+        return self._get("/stats/sends", **filters)
 
     def get_bounce_counts(self, **filters: Any) -> dict:
         """Get bounce counts grouped by day and type."""
-        return self._get("/stats/outbound/bounces", **filters)
+        return self._get("/stats/bounces", **filters)
 
     def get_spam_complaints_counts(self, **filters: Any) -> dict:
         """Get spam complaint counts grouped by day."""
-        return self._get("/stats/outbound/spam", **filters)
+        return self._get("/stats/spam", **filters)
 
     def get_tracked_email_counts(self, **filters: Any) -> dict:
         """Get counts of tracked emails grouped by day."""
@@ -197,7 +197,7 @@ class ServerClient(BaseClient):
 
     def get_email_open_counts(self, **filters: Any) -> dict:
         """Get email open counts grouped by day."""
-        return self._get("/stats/outbound/opens", **filters)
+        return self._get("/stats/opens", **filters)
 
     def get_email_open_platform_usage(self, **filters: Any) -> dict:
         """Get email open stats grouped by platform (desktop, mobile, etc.)."""
@@ -213,7 +213,7 @@ class ServerClient(BaseClient):
 
     def get_click_counts(self, **filters: Any) -> dict:
         """Get link click counts grouped by day."""
-        return self._get("/stats/outbound/clicks", **filters)
+        return self._get("/stats/clicks", **filters)
 
     def get_click_browser_usage(self, **filters: Any) -> dict:
         """Get click stats grouped by browser family."""
