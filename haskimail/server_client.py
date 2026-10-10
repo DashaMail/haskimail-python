@@ -71,10 +71,6 @@ class ServerClient(BaseClient):
         """Get details for a single bounce."""
         return self._get(f"/bounces/{bounce_id}")
 
-    def get_bounce_dump(self, bounce_id: int) -> dict:
-        """Get the raw SMTP dump for a bounce."""
-        return self._get(f"/bounces/{bounce_id}/dump")
-
     def activate_bounce(self, bounce_id: int) -> dict:
         """Reactivate a hard-bounced recipient."""
         return self._put(f"/bounces/{bounce_id}/activate")
@@ -129,10 +125,6 @@ class ServerClient(BaseClient):
     def get_outbound_message_details(self, message_id: str) -> dict:
         """Get full details for a sent message."""
         return self._get(f"/messages/outbound/{message_id}/details")
-
-    def get_outbound_message_dump(self, message_id: str) -> dict:
-        """Get the raw SMTP source of a sent message."""
-        return self._get(f"/messages/outbound/{message_id}/dump")
 
     # ── Message Opens ───────────────────────────────────────────────────────
 
@@ -207,10 +199,6 @@ class ServerClient(BaseClient):
         """Get email open stats grouped by email client."""
         return self._get("/stats/outbound/opens/emailclients", **filters)
 
-    def get_email_open_read_times(self, **filters: Any) -> dict:
-        """Get email read-time distribution."""
-        return self._get("/stats/outbound/opens/readtimes", **filters)
-
     def get_click_counts(self, **filters: Any) -> dict:
         """Get link click counts grouped by day."""
         return self._get("/stats/clicks", **filters)
@@ -222,10 +210,6 @@ class ServerClient(BaseClient):
     def get_click_platform_usage(self, **filters: Any) -> dict:
         """Get click stats grouped by platform."""
         return self._get("/stats/outbound/clicks/platforms", **filters)
-
-    def get_click_location(self, **filters: Any) -> dict:
-        """Get click stats grouped by geographic location."""
-        return self._get("/stats/outbound/clicks/location", **filters)
 
     # ── Webhooks ────────────────────────────────────────────────────────────
 

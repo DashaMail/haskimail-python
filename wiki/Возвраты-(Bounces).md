@@ -55,13 +55,6 @@ print(f"Описание: {bounce['Description']}")
 print(f"Дата: {bounce['BouncedAt']}")
 ```
 
-## SMTP-дамп возврата
-
-```python
-dump = client.get_bounce_dump(12345)
-print(dump["Body"])  # Полный SMTP-ответ сервера
-```
-
 ## Реактивация получателя
 
 ```python

@@ -236,12 +236,6 @@ signature = account.create_sender_signature({
     "Name": "Отдел продаж",
     "FromEmail": "sales@example.com",
 })
-
-# Подтвердить SPF
-account.verify_sender_signature_spf(signature["ID"])
-
-# Запросить новый DKIM
-account.request_new_dkim_for_sender_signature(signature["ID"])
 ```
 
 ### Push шаблонов

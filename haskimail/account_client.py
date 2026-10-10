@@ -64,10 +64,6 @@ class AccountClient(BaseClient):
         """Register a new domain."""
         return self._post("/domains", body=options)
 
-    def edit_domain(self, domain_id: int, options: dict[str, Any]) -> dict:
-        """Update a domain."""
-        return self._put(f"/domains/{domain_id}", body=options)
-
     def delete_domain(self, domain_id: int) -> dict:
         """Delete a domain."""
         return self._delete(f"/domains/{domain_id}")
@@ -75,10 +71,6 @@ class AccountClient(BaseClient):
     def verify_domain_dkim(self, domain_id: int) -> dict:
         """Trigger DKIM verification for a domain."""
         return self._put(f"/domains/{domain_id}/verifyDkim")
-
-    def verify_domain_return_path(self, domain_id: int) -> dict:
-        """Trigger Return-Path verification for a domain."""
-        return self._put(f"/domains/{domain_id}/verifyReturnPath")
 
     def verify_domain_spf(self, domain_id: int) -> dict:
         """Trigger SPF verification for a domain."""
@@ -115,14 +107,6 @@ class AccountClient(BaseClient):
     def resend_sender_signature_confirmation(self, signature_id: int) -> dict:
         """Resend the confirmation email for a sender signature."""
         return self._post(f"/senders/{signature_id}/resend")
-
-    def verify_sender_signature_spf(self, signature_id: int) -> dict:
-        """Trigger SPF verification for a sender signature."""
-        return self._post(f"/senders/{signature_id}/verifyspf")
-
-    def request_new_dkim_for_sender_signature(self, signature_id: int) -> dict:
-        """Request a new DKIM key for a sender signature."""
-        return self._post(f"/senders/{signature_id}/requestnewdkim")
 
     # ── Templates (Account-level) ───────────────────────────────────────────
 
