@@ -166,11 +166,8 @@ overview = client.get_outbound_overview(
 # Отправки по дням
 sent = client.get_sent_counts(tag="welcome")
 
-# Открытия по платформам
-platforms = client.get_email_open_platform_usage()
-
-# Клики по браузерам
-browsers = client.get_click_browser_usage()
+# Открытия по дням
+opens = client.get_email_open_counts()
 ```
 
 ## AccountClient

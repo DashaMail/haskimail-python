@@ -161,33 +161,13 @@ class ServerClient(BaseClient):
         """Get spam complaint counts grouped by day."""
         return self._get("/stats/spam", **filters)
 
-    def get_tracked_email_counts(self, **filters: Any) -> dict:
-        """Get counts of tracked emails grouped by day."""
-        return self._get("/stats/outbound/tracked", **filters)
-
     def get_email_open_counts(self, **filters: Any) -> dict:
         """Get email open counts grouped by day."""
         return self._get("/stats/opens", **filters)
 
-    def get_email_open_platform_usage(self, **filters: Any) -> dict:
-        """Get email open stats grouped by platform (desktop, mobile, etc.)."""
-        return self._get("/stats/outbound/opens/platforms", **filters)
-
-    def get_email_open_client_usage(self, **filters: Any) -> dict:
-        """Get email open stats grouped by email client."""
-        return self._get("/stats/outbound/opens/emailclients", **filters)
-
     def get_click_counts(self, **filters: Any) -> dict:
         """Get link click counts grouped by day."""
         return self._get("/stats/clicks", **filters)
-
-    def get_click_browser_usage(self, **filters: Any) -> dict:
-        """Get click stats grouped by browser family."""
-        return self._get("/stats/outbound/clicks/browserfamilies", **filters)
-
-    def get_click_platform_usage(self, **filters: Any) -> dict:
-        """Get click stats grouped by platform."""
-        return self._get("/stats/outbound/clicks/platforms", **filters)
 
     # ── Webhooks ────────────────────────────────────────────────────────────
 
