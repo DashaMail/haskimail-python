@@ -62,13 +62,6 @@ class TestDomains:
         call_args = mock_session.request.call_args
         assert call_args[0] == ("PUT", "https://api.haskimail.ru/domains/5/verifyspf")
 
-    def test_rotate_dkim(self, account_client, mock_session, ok_response):
-        mock_session.request.return_value = ok_response(200, {"ID": 5})
-        account_client.rotate_domain_dkim(5)
-        call_args = mock_session.request.call_args
-        assert call_args[0] == ("POST", "https://api.haskimail.ru/domains/5/rotatedkim")
-
-
 class TestSenderSignatures:
     def test_get_sender_signatures(self, account_client, mock_session, ok_response):
         mock_session.request.return_value = ok_response(

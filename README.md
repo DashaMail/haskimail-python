@@ -197,9 +197,6 @@ account.verify_domain_dkim(domain["ID"])
 
 # Проверить SPF
 account.verify_domain_spf(domain["ID"])
-
-# Ротация DKIM-ключа
-account.rotate_domain_dkim(domain["ID"])
 ```
 
 ### Серверы
