@@ -23,7 +23,7 @@ try:
 except InactiveRecipientsError as e:
     # Получатель ранее вернул hard bounce или пожаловался на спам
     print(f"Неактивные получатели: {', '.join(e.recipients)}")
-    print("Вы можете реактивировать их через client.activate_bounce()")
+    print("Убрать адрес из стоп-листа можно через client.delete_suppressions()")
 
 except InvalidAPIKeyError:
     print("Неверный API-токен! Проверьте настройки сервера.")

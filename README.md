@@ -78,9 +78,6 @@ stats = client.get_delivery_statistics()
 
 # Список возвратов
 bounces = client.get_bounces(count=50, type="HardBounce")
-
-# Реактивировать получателя
-client.activate_bounce(bounce_id=12345)
 ```
 
 ### Шаблоны

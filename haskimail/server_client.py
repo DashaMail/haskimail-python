@@ -67,14 +67,6 @@ class ServerClient(BaseClient):
         """
         return self._get("/bounces", **filters)
 
-    def get_bounce(self, bounce_id: int) -> dict:
-        """Get details for a single bounce."""
-        return self._get(f"/bounces/{bounce_id}")
-
-    def activate_bounce(self, bounce_id: int) -> dict:
-        """Reactivate a hard-bounced recipient."""
-        return self._put(f"/bounces/{bounce_id}/activate")
-
     # ── Templates ───────────────────────────────────────────────────────────
 
     def get_templates(self, **filters: Any) -> dict:

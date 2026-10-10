@@ -79,14 +79,6 @@ class TestBounces:
         result = server_client.get_bounces(count=10, offset=0)
         assert result["TotalCount"] == 1
 
-    def test_activate_bounce(self, server_client, mock_session, ok_response):
-        mock_session.request.return_value = ok_response(200, {"ID": 42, "Email": "a@b.com"})
-        result = server_client.activate_bounce(42)
-        assert result["ID"] == 42
-        call_args = mock_session.request.call_args
-        assert call_args[0] == ("PUT", "https://api.haskimail.ru/bounces/42/activate")
-
-
 class TestTemplates:
     def test_get_templates(self, server_client, mock_session, ok_response):
         mock_session.request.return_value = ok_response(

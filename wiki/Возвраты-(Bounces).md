@@ -43,23 +43,3 @@ for b in bounces["Bounces"]:
 | `tag` | string | Фильтр по тегу |
 | `messageID` | string | Фильтр по ID сообщения |
 | `messagestream` | string | ID канала |
-
-## Детали возврата
-
-```python
-bounce = client.get_bounce(12345)
-
-print(f"Email: {bounce['Email']}")
-print(f"Тип: {bounce['Type']}")
-print(f"Описание: {bounce['Description']}")
-print(f"Дата: {bounce['BouncedAt']}")
-```
-
-## Реактивация получателя
-
-```python
-result = client.activate_bounce(12345)
-print(f"Реактивирован: {result['Email']}")
-```
-
-> **Важно:** Реактивировать можно только получателей с жёстким возвратом (HardBounce). Жалобы на спам (SpamComplaint) реактивировать нельзя.

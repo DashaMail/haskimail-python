@@ -1,4 +1,4 @@
-"""Work with bounces: list, inspect, and reactivate."""
+"""Work with bounces: delivery statistics and the list of bounces."""
 
 from haskimail import ServerClient
 
@@ -14,9 +14,3 @@ for bounce_type in stats.get("Bounces", []):
 bounces = client.get_bounces(count=10, type="HardBounce")
 for bounce in bounces["Bounces"]:
     print(f"{bounce['Email']} — {bounce['Description']} ({bounce['BouncedAt']})")
-
-# Реактивировать конкретный адрес
-if bounces["Bounces"]:
-    first = bounces["Bounces"][0]
-    result = client.activate_bounce(first["ID"])
-    print(f"Реактивирован: {result['Email']}")
