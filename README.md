@@ -249,17 +249,6 @@ account.push_templates({
 })
 ```
 
-### Удаление данных (GDPR)
-
-```python
-result = account.request_data_removal({
-    "RequestedBy": "admin@example.com",
-    "RequestedFor": "user@example.com",
-})
-
-status = account.get_data_removal_status(result["ID"])
-```
-
 ## Обработка ошибок
 
 Библиотека использует типизированную иерархию исключений:

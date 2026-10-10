@@ -91,20 +91,6 @@ class TestSenderSignatures:
         assert call_args[0] == ("POST", "https://api.haskimail.ru/senders/10/resend")
 
 
-class TestDataRemovals:
-    def test_request_data_removal(self, account_client, mock_session, ok_response):
-        mock_session.request.return_value = ok_response(200, {"ID": 1, "Status": "Pending"})
-        result = account_client.request_data_removal(
-            {"RequestedBy": "admin@test.com", "RequestedFor": "user@test.com"}
-        )
-        assert result["Status"] == "Pending"
-
-    def test_get_data_removal_status(self, account_client, mock_session, ok_response):
-        mock_session.request.return_value = ok_response(200, {"ID": 1, "Status": "Complete"})
-        result = account_client.get_data_removal_status(1)
-        assert result["Status"] == "Complete"
-
-
 class TestErrorHandling:
     def test_invalid_api_key(self, account_client, mock_session, error_response):
         mock_session.request.return_value = error_response(401, 10, "Invalid API token")

@@ -114,12 +114,3 @@ class AccountClient(BaseClient):
         """Push templates from one server to another."""
         return self._put("/templates/push", body=options)
 
-    # ── Data Removals ───────────────────────────────────────────────────────
-
-    def request_data_removal(self, options: dict[str, Any]) -> dict:
-        """Submit a data removal request (GDPR)."""
-        return self._post("/data-removals", body=options)
-
-    def get_data_removal_status(self, removal_id: int) -> dict:
-        """Check the status of a data removal request."""
-        return self._get(f"/data-removals/{removal_id}")
