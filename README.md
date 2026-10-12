@@ -50,6 +50,26 @@ response = client.send_email_with_template({
 })
 ```
 
+### Пакетная отправка
+
+```python
+# До 500 писем за один запрос
+responses = client.send_email_batch([
+    {
+        "From": "отправитель@домен.ru",
+        "To": "user1@example.com",
+        "Subject": "Привет, User 1!",
+        "TextBody": "Сообщение для User 1",
+    },
+    {
+        "From": "отправитель@домен.ru",
+        "To": "user2@example.com",
+        "Subject": "Привет, User 2!",
+        "TextBody": "Сообщение для User 2",
+    },
+])
+```
+
 ### Управление возвратами (bounces)
 
 ```python

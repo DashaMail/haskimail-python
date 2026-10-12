@@ -43,6 +43,19 @@ class TestSendEmail:
         call_args = mock_session.request.call_args
         assert call_args[0] == ("POST", "https://api.haskimail.ru/email")
 
+    def test_send_email_batch(self, server_client, mock_session, ok_response):
+        batch_result = [{"MessageID": "1"}, {"MessageID": "2"}]
+        mock_session.request.return_value = ok_response(200, batch_result)
+
+        result = server_client.send_email_batch(
+            [
+                {"From": "a@b.com", "To": "c@d.com", "Subject": "1", "TextBody": "1"},
+                {"From": "a@b.com", "To": "e@f.com", "Subject": "2", "TextBody": "2"},
+            ]
+        )
+
+        assert len(result) == 2
+
     def test_send_email_with_template(self, server_client, mock_session, ok_response):
         mock_session.request.return_value = ok_response(200, {"MessageID": "tpl-1"})
 

@@ -37,6 +37,10 @@ class ServerClient(BaseClient):
         """
         return self._post("/email", body=email)
 
+    def send_email_batch(self, emails: list[dict[str, Any]]) -> list:
+        """Send a batch of up to 500 emails in one API call."""
+        return self._post("/email/batch", body=emails)
+
     def send_email_with_template(self, template: dict[str, Any]) -> dict:
         """Send an email using a template.
 
@@ -44,6 +48,10 @@ class ServerClient(BaseClient):
         and ``TemplateModel``.
         """
         return self._post("/email/withTemplate", body=template)
+
+    def send_email_batch_with_templates(self, templates: list[dict[str, Any]]) -> list:
+        """Send a batch of template-based emails."""
+        return self._post("/email/batchWithTemplates", body=templates)
 
     # ── Bounces ─────────────────────────────────────────────────────────────
 
