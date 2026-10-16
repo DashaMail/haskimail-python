@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.0 (2026-10-17)
+
+- `validate_template` is back: `POST /templates/validate` renders the template with
+  `TestRenderModel` exactly as sending does (literal replacement, so model keys
+  include the delimiters: `{"{{name}}": "Ivan"}`) and reports `{{...}}` fragments
+  left without a value, with line and position.
+- Open and click breakdowns are back: `get_email_open_platform_usage`,
+  `get_email_open_client_usage`, `get_click_browser_usage`,
+  `get_click_platform_usage`. Each returns `Days` plus totals for the period.
+
 ## 1.1.0 (2026-10-13)
 
 The client now matches the methods the Haskimail API actually serves.
