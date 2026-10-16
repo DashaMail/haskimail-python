@@ -94,6 +94,17 @@ class TestTemplates:
         )
         assert result["TemplateId"] == 99
 
+    def test_validate_template(self, server_client, mock_session, ok_response):
+        mock_session.request.return_value = ok_response(
+            200, {"AllContentIsValid": True, "SuggestedTemplateModel": {"{{name}}": "Иван"}}
+        )
+        result = server_client.validate_template(
+            {"HtmlBody": "<p>{{name}}</p>", "TestRenderModel": {"{{name}}": "Иван"}}
+        )
+        assert result["AllContentIsValid"] is True
+        call_args = mock_session.request.call_args
+        assert call_args[0] == ("POST", "https://api.haskimail.ru/templates/validate")
+
 
 class TestMessageStreams:
     def test_get_message_streams(self, server_client, mock_session, ok_response):

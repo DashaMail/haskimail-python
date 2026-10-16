@@ -89,6 +89,10 @@ class ServerClient(BaseClient):
         """Delete a template."""
         return self._delete(f"/templates/{id_or_alias}")
 
+    def validate_template(self, options: dict[str, Any]) -> dict:
+        """Validate template content without creating it."""
+        return self._post("/templates/validate", body=options)
+
     # ── Outbound Messages ───────────────────────────────────────────────────
 
     def get_outbound_messages(self, **filters: Any) -> dict:

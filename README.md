@@ -98,6 +98,13 @@ template = client.create_template({
 client.edit_template(template["TemplateId"], {
     "Subject": "Обновлённая тема",
 })
+
+# Валидировать шаблон
+result = client.validate_template({
+    "Subject": "{{subject}}",
+    "HtmlBody": "{{content}}",
+    "TestRenderModel": {"{{subject}}": "Тест", "{{content}}": "Привет!"},
+})
 ```
 
 ### Каналы сообщений (Message Streams)
