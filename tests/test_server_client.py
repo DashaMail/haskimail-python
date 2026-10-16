@@ -144,6 +144,24 @@ class TestWebhooks:
         assert result["ID"] == 1
 
 
+class TestStats:
+    @pytest.mark.parametrize(
+        "method, path",
+        [
+            ("get_email_open_platform_usage", "/stats/opens/platforms"),
+            ("get_email_open_client_usage", "/stats/opens/emailclients"),
+            ("get_click_browser_usage", "/stats/clicks/browserfamilies"),
+            ("get_click_platform_usage", "/stats/clicks/platforms"),
+        ],
+    )
+    def test_breakdown_paths(self, server_client, mock_session, ok_response, method, path):
+        mock_session.request.return_value = ok_response(200, {"Days": [], "Desktop": 0})
+        result = getattr(server_client, method)(fromdate="2026-10-01")
+        assert result["Days"] == []
+        call_args = mock_session.request.call_args
+        assert call_args[0] == ("GET", "https://api.haskimail.ru" + path)
+
+
 class TestErrorHandling:
     def test_invalid_api_key(self, server_client, mock_session, error_response):
         mock_session.request.return_value = error_response(401, 10, "Invalid API token")
